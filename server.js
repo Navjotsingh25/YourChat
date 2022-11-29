@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 
-const botName = 'chatbox Bot'
+const botName = 'YourChat Bot'
 //st static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -21,7 +21,7 @@ io.on('connection', socket => {
         const user = userJoin(socket.id, username, room);
         socket.join(user.room);
         //welcomecurrent user
-        socket.emit('message', formatMessage(botName, 'Welcome to chatBox'));
+        socket.emit('message', formatMessage(botName, 'Welcome to YourChat'));
 
         //brodecast whena user connect
         socket.broadcast.to(user.room).emit('message', formatMessage(botName, ` ${user.username} has joined a chat`));
